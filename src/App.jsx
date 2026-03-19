@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Button from './components/Button'
 import HomePage from './pages/Home'
@@ -7,9 +7,16 @@ import AboutUsPage from './pages/AboutUs'
 import EncryptDecryptPage from './pages/EncryptDecrypt'
 import FAQs from './components/faqs'
 import PixelBlast from './utils/pixelblast'
+import Footer from './utils/Footer'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home')
+  const [currentPage, setCurrentPage] = useState(() => {
+    return localStorage.getItem('currentPage') || 'home'
+  })
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', currentPage)
+  }, [currentPage])
 
   const renderPage = () => {
     switch (currentPage) {
@@ -57,6 +64,7 @@ function App() {
         boxShadow: '0 20px 40px rgba(0,0,0,0.6), inset 0 2px 5px rgba(255, 255, 255, 0.1)'
       }}>
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+          <Button onClick={() => setCurrentPage('home')}>Home</Button>
           <Button onClick={() => setCurrentPage('encrypt')}>Encrypt/Decrypt</Button>
           <Button onClick={() => setCurrentPage('about')}>About Us</Button>
           <Button onClick={() => setCurrentPage('team')}>Team</Button>
@@ -67,31 +75,13 @@ function App() {
         {renderPage()}
       </main>
 
-      <div style={{ position: 'relative', zIndex: 10, width: '100%', padding: '2rem' }}>
-        <FAQs />
-      </div>
+      {currentPage === 'home' && (
+        <div style={{ position: 'relative', zIndex: 10, width: '100%', padding: '2rem' }}>
+          <FAQs />
+        </div>
+      )}
 
-      <footer style={{
-        position: 'relative',
-        zIndex: 10,
-        width: '100%',
-        padding: '3rem 2rem',
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-        backgroundColor: 'rgba(10, 10, 12, 0.6)',
-        backdropFilter: 'blur(20px)',
-        textAlign: 'center',
-        color: '#ffa212',
-        fontSize: '0.95rem',
-        fontFamily: 'system-ui, -apple-system, sans-serif',
-        boxSizing: 'border-box'
-      }}>
-        <p style={{ margin: 0, letterSpacing: '0.5px' }}>
-          &copy; {new Date().getFullYear()} CS-Crypt. Decrypting the universe.
-        </p>
-        <p style={{ margin: '0.5rem 0 0', fontSize: '0.8rem', color: '#6b7280' }}>
-          Designed and built with passion by the Team.
-        </p>
-      </footer>
+      <Footer />
     </div>
   )
 }

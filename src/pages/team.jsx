@@ -1,10 +1,14 @@
 import PixelCard from '../utils/pixelcard.jsx';
 
 const TEAM = [
-  { name: 'Dolly Shrivastava', role: 'Project Head', image: '/src/assets/dolly.png' },
-  { name: 'Sarthak Malhotra', role: 'Frontend Engineer', image: '/src/assets/sarthak.png' },
-  { name: 'Charlie Davis', role: 'UI/UX Designer', image: '/src/assets/charlie.png' },
-  { name: 'Dana Lee', role: 'Project Manager', image: '/src/assets/dana.png' }
+  { name: 'Dolly Srivastava', role: 'Project Head', image: '/src/assets/dolly.png', github: 'https://github.com/idkdolly' },
+  { name: 'Sarthak Malhotra', role: 'Cipher Team', image: '/src/assets/sarthak.png', github: 'https://github.com/Sarthak-Malhotra' },
+  { name: 'Akshita Dhiman', role: 'UI/UX', image: '/src/assets/akshita.png' },
+  { name: 'Tanishq Bhatnagar', role: 'UI/UX', image: '/src/assets/tanishq.png', github: 'https://github.com/TanishqBhatnagar312' },
+  { name: 'Yuvika Sachdeva', role: 'Cipher Team', image: '/src/assets/yuvika.png', github: 'https://github.com/YuvikaSachdeva' },
+  { name: 'Amisha Upadhyay', role: 'UI/UX', image: '/src/assets/amisha.png', github: 'https://github.com/amishau209-carat' },
+  { name: 'Dwijesh Chilukuri', role: 'UI/UX', image: '/src/assets/dwijesh.png', github: 'https://github.com/just-dwijesh' },
+  { name: 'Anukriti Verma', role: 'UI/UX', image: '/src/assets/anukriti.png', github: 'anukritiverma236-hub' }
 ];
 
 export default function TeamPage() {
